@@ -17,7 +17,7 @@ fetchMyIP((error, ip) => {
 
   fetchCoordsByIP(ip, (error, data) => {
     console.log(data);
-    fetchISSFlyOverTimes(data);
+    fetchISSFlyOverTimes(null, data);
   });
 
   console.log('It worked! Returned IP:' , ip);
