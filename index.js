@@ -20,6 +20,14 @@ fetchMyIP((error, ip) => {
     fetchISSFlyOverTimes(null, data);
   });
 
+  nextISSTimesForMyLocation((error, passTimes) => {
+    if (error) {
+      return console.log("It didn't work!", error);
+    }
+    // success, print out the deets!
+    console.log(passTimes);
+  });
+
   console.log('It worked! Returned IP:' , ip);
   
 // {"ip":"174.119.175.95"}
