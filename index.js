@@ -6,13 +6,19 @@
  *   - An error, if any (nullable)
  *   - The IP address as a string (null if error). Example: "162.245.144.188"
  */
-const { fetchMyIP } = require('./iss');
+const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
+
 fetchMyIP((error, ip) => {
   // use request to fetch IP address from JSON API
   if (error) {
     console.log("It didn't work!" , error);
     return;
   }
+
+  fetchCoordsByIP(ip, (error, data) => {
+    console.log(data);
+    fetchISSFlyOverTimes(data);
+  });
 
   console.log('It worked! Returned IP:' , ip);
   
